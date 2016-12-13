@@ -25,7 +25,6 @@
 		4BC431191B76446E00FB6895 /* setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BC431161B76446E00FB6895 /* setting@2x.png */; };
 		4BD0DD3F1B42C84F00F08CF5 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD0DD3D1B42C84F00F08CF5 /* Kingfisher.framework */; };
 		4BD0DD431B42CBA400F08CF5 /* BeautyImageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD0DD421B42CBA400F08CF5 /* BeautyImageEntity.swift */; };
-		4BE566D21B74F1FE0079197A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE566D01B74F1FE0079197A /* Fabric.framework */; };
 		4BE566D31B74F1FE0079197A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE566D11B74F1FE0079197A /* Crashlytics.framework */; };
 		4BF4E6E61B72531100986D21 /* BeautyCollectionViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF4E6E51B72531100986D21 /* BeautyCollectionViewFooter.swift */; };
 		4BF7FF0E1BAE6069008DC2C9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BF7FF0D1BAE6069008DC2C9 /* Alamofire.framework */; };
@@ -64,7 +63,6 @@
 		4BC431161B76446E00FB6895 /* setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting@2x.png"; sourceTree = "<group>"; };
 		4BD0DD3D1B42C84F00F08CF5 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		4BD0DD421B42CBA400F08CF5 /* BeautyImageEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeautyImageEntity.swift; sourceTree = "<group>"; };
-		4BE566D01B74F1FE0079197A /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		4BE566D11B74F1FE0079197A /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		4BF4E6E51B72531100986D21 /* BeautyCollectionViewFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeautyCollectionViewFooter.swift; sourceTree = "<group>"; };
 		4BF7FF0D1BAE6069008DC2C9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -78,7 +76,6 @@
 				4BF7FF0E1BAE6069008DC2C9 /* Alamofire.framework in Frameworks */,
 				4BD0DD3F1B42C84F00F08CF5 /* Kingfisher.framework in Frameworks */,
 				4BE566D31B74F1FE0079197A /* Crashlytics.framework in Frameworks */,
-				4BE566D21B74F1FE0079197A /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +121,6 @@
 		4B13663E1B3EF8A100986654 /* beauties */ = {
 			isa = PBXGroup;
 			children = (
-				4BE566D01B74F1FE0079197A /* Fabric.framework */,
 				4BE566D11B74F1FE0079197A /* Crashlytics.framework */,
 				4B4903B91B6FB1F4004D5458 /* images */,
 				4BD0DD411B42CB8400F08CF5 /* Entiy */,
@@ -199,7 +195,6 @@
 				4B1366391B3EF8A100986654 /* Frameworks */,
 				4B13663A1B3EF8A100986654 /* Resources */,
 				4BD0DD3C1B42C7FC00F08CF5 /* ShellScript */,
-				4BE566CF1B74F1B10079197A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -308,19 +303,6 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
-		4BE566CF1B74F1B10079197A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 5b6d196a58f4acbc481f40758c365e9b14ae8732 3490fc62e207b8c7ec5ae2d4a8578db972041bdd761c9d59f51f7b5ca63b611f";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -421,6 +403,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -457,6 +440,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 2.3;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -476,6 +460,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "vars.me.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = beauty;
 				PROVISIONING_PROFILE = "1e021d34-b179-4904-94ce-d3c038ab20ef";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -494,6 +479,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "vars.me.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = beauty;
 				PROVISIONING_PROFILE = "1e021d34-b179-4904-94ce-d3c038ab20ef";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
