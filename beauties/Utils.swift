@@ -44,9 +44,9 @@ class BeautyDateUtil {
 }
 
 class NetworkUtil {
-    static let API_DATA_URL = "http://gank.avosapps.com/api/data/%E7%A6%8F%E5%88%A9/"
-    static let API_DAY_URL  = "http://gank.avosapps.com/api/day/"
-    static let API_RANDOM_URL = "http://gank.avosapps.com/api/random/data/%E7%A6%8F%E5%88%A9/"
+    static let API_DATA_URL = "http://gank.io/api/data/%E7%A6%8F%E5%88%A9/"
+    static let API_DAY_URL  = "http://gank.io/api/day/"
+    static let API_RANDOM_URL = "http://gank.io/api/random/data/%E7%A6%8F%E5%88%A9/"
     
     static let PAGE_SIZE = 20
     
@@ -57,15 +57,16 @@ class NetworkUtil {
         if (DEBUG) {
             print(url)
         }
-
-        Alamofire.request(.GET, url).responseJSON {
-            _, _, result in
-            switch result {
-            case let .Success(json):
+        
+        Alamofire.request(.GET, url).responseJSON { (result) in
+            switch result.result {
+            case .Success(let json):
                 complete(NetworkUtil.parseBeautyList(json), nil)
-            case let .Failure(_, error):
+                break
+            case .Failure(let error):
                 print(error)
                 complete([String](), error)
+                break
             }
         }
     }
@@ -75,12 +76,9 @@ class NetworkUtil {
         if (DEBUG) {
             print(API_DAY_URL + BeautyDateUtil.todayString())
         }
-        
-        Alamofire.request(.GET, API_DAY_URL + BeautyDateUtil.todayString()).responseJSON {
-            _, _, result in
-            
-            switch result {
-            case let .Success(json):
+        Alamofire.request(.GET, API_DAY_URL + BeautyDateUtil.todayString()).responseJSON { (result) in
+            switch result.result {
+            case .Success(let json):
                 if let j = json as? Dictionary<String, AnyObject> {
                     if let category = j["category"] as? [String] {
                         if category.contains("福利") {
@@ -97,13 +95,12 @@ class NetworkUtil {
                         }
                     }
                 }
-                // No Beauty today, get a random beauty
-                NetworkUtil.getRandomBeauty(1, complete: complete)
-            case let .Failure(_, error):
+                break
+            case .Failure(let error):
                 print(error)
                 complete([String]())
+                break
             }
-            
         }
     }
     
@@ -114,16 +111,15 @@ class NetworkUtil {
         if (DEBUG) {
             print("Random URL --> \(url)")
         }
-
-        Alamofire.request(.GET, url).responseJSON {
-            _, _, result in
-            
-            switch result {
-            case let .Success(json):
+        Alamofire.request(.GET, url).responseJSON { (result) in
+            switch result.result {
+            case .Success(let json):
                 complete(NetworkUtil.parseBeautyList(json))
-            case let .Failure(_, error):
+                break
+            case .Failure(let error):
                 print(error)
                 complete([String]())
+                break
             }
         }
     }
